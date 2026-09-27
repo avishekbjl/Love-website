@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  top: 35%;
+}
+
+h1 {
+  font-size: 38px;
+  animation: pulse 1s infinite;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  background: white;
+  color: #ff416c;
+  font-weight: bold;
+}
+
+.love {
+  position: absolute;
+  bottom: -50px;
+  font-size: 20px;
+  animation: fly 4s linear forwards;
+  white-space: nowrap;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(0) scale(.5);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>I Love You ❤️</h1>
+  <button onclick="startLove()">Click Me 💌</button>
+</div>
+
+<script>
+
+function startLove() {
+
+  document.querySelector("button").style.display = "none";
+
+  let count = 0;
+
+  let timer = setInterval(function() {
+
+    if (count >= 1000) {
+      clearInterval(timer);
+      return;
+    }
+
+    let love = document.createElement("div");
+
+    love.className = "love";
+    love.innerHTML = "I Love You ❤️";
+
+    love.style.left = Math.random() * 85 + "vw";
+    love.style.animationDuration =
+      (2 + Math.random() * 3) + "s";
+
+    document.body.appendChild(love);
+
+    setTimeout(function() {
+      love.remove();
+    }, 5000);
+
+    count++;
+
+  }, 40);
+}
+
+</script>
+
+</body>
+</html>
